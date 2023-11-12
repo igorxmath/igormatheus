@@ -1,7 +1,4 @@
-# Next.js + Contentlayer
+# igormatheus
+Just my personal nextjs website
 
-A template with Next.js 13 app dir, Contentlayer, Tailwind CSS and dark mode.
-
-https://next-contentlayer.vercel.app
-
-
+Link to the website: https://igormatheus.com or https://igormatheus.com.br
