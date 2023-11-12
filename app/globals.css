@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 100% 100%;
+
+    --muted: 0 0% 7%;
+    --muted-foreground: 0 0% 64%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 100% 100%;
+
+    --card: 0 0% 5.5%;
+    --card-foreground: 0 100% 100%;
+
+    --fieldset: 0 0% 0%;
+    --fieldset-foreground: 0 100% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 20%;
+
+    --primary: 0 100% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 100% 100%;
+
+    --accent: 0 0% 17%;
+    --accent-foreground: 0 100% 100%;
+
+    --destructive: 0 100% 45%;
+    --destructive-foreground: 0 100% 100%;
+
+    --ring: 0 0% 53%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  .prose .anchor {
+    @apply absolute invisible no-underline;
+
+    margin-left: -1em;
+    padding-right: 0.5em;
+    width: 80%;
+    max-width: 700px;
+    cursor: pointer;
+  }
+
+  .anchor:hover {
+    @apply visible;
+  }
+
+  .prose a {
+    @apply transition-all underline-offset-2 decoration-neutral-600 decoration-[0.1em];
+  }
+
+  .prose .anchor:after {
+    content: '#';
+    @apply text-muted-foreground;
+  }
+
+  .prose *:hover > .anchor {
+    @apply visible;
+  }
+
+  .prose pre {
+    @apply border bg-secondary/50;
+  }
+
+  .prose code {
+    @apply px-1 py-0.5 border rounded-lg bg-secondary;
+  }
+
+  .prose pre code {
+    @apply p-0;
+    border: initial;
+  }
+
+  .prose img {
+    /* Don't apply styles to next/image */
+    @apply m-0;
+  }
+
+  .prose > :first-child {
+    /* Override removing top margin, causing layout shift */
+    margin-top: 0.25em !important;
+    margin-bottom: 0.25em !important;
+  }
+
+  pre::-webkit-scrollbar {
+    display: none;
+  }
+
+  pre {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .prose .tweet a {
+    text-decoration: inherit;
+    font-weight: inherit;
+  }
+
+  .prose table {
+    @apply block caption-bottom text-sm max-w-fit overflow-x-auto whitespace-nowrap;
+  }
+
+  .prose thead {
+    @apply [&_tr]:border-b;
+  }
+
+  .prose tbody {
+    @apply [&_tr:last-child]:border-0;
+  }
+
+  .prose tfoot {
+    @apply bg-primary font-medium text-primary-foreground;
+  }
+
+  .prose tr {
+    @apply border-b-border transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted;
+  }
+
+  .prose th {
+    @apply h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0;
+  }
+
+  .prose td {
+    @apply p-4 align-middle [&:has([role=checkbox])]:pr-0;
+  }
+
+  .prose caption {
+    @apply mt-4 text-sm text-muted-foreground;
+  }
+
+  .prose .callout > p {
+    margin: 0 !important;
+  }
+
+  [data-rehype-pretty-code-fragment] code {
+    @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm;
+    counter-reset: line;
+    box-decoration-break: clone;
+  }
+  [data-rehype-pretty-code-fragment] .line {
+    @apply py-1;
+  }
+  [data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
+  }
+  [data-rehype-pretty-code-fragment] .line--highlighted {
+    @apply bg-opacity-10;
+  }
+  [data-rehype-pretty-code-fragment] .line-highlighted span {
+    @apply relative;
+  }
+  [data-rehype-pretty-code-fragment] .word--highlighted {
+    @apply rounded-md bg-opacity-10 p-1;
+  }
+  [data-rehype-pretty-code-title] {
+    @apply px-4 py-3 text-xs font-medium border rounded-t-sm bg-secondary;
+  }
+  [data-rehype-pretty-code-title] + pre {
+    @apply mt-0 rounded-t-none border-t-0;
+  }
+}
